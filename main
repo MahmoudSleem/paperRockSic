@@ -1,5 +1,10 @@
 import 'rockpapperdic.dart';
 void main() {
-  RockPapperSic rok = RockPapperSic();
-  rok.play();
+  // لعبة حجرة ورقة مقص 
+  // RockPapperSic rok = RockPapperSic();
+  // rok.play();
+  
+  // لعبة تخمين رقمم بين الكمبيوتر واللاعب 
+  // randomNumbersGame  player = randomNumbersGame();
+  // player.play();
 }
