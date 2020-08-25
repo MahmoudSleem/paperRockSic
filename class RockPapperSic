@@ -1,0 +1,63 @@
+import 'dart:math';
+import 'dart:io';
+
+class RockPapperSic{
+  int computerRank =0;
+  int personRank = 0;
+  String choceComouter;
+  String chosePerson;
+
+  String choceRandComputer(){
+    List<String> choces =['rock','paper','sic'];
+    Random rand = Random();
+    int index = rand.nextInt(3);
+    print(choces[index]);
+    return choces[index];
+  }
+  String chocePerson(){
+    return  stdin.readLineSync();
+  }
+  void compare(String person , String computer ){
+    switch (person){
+      case 'rock':
+        if(computer =='paper')
+          this.computerRank++;
+        else if(computer =='sic')
+          this.personRank++;
+        break;
+      case 'paper':
+        if(computer =='rock')
+          this.personRank++;
+        else if(computer =='sic')
+          this.computerRank++;
+        break;
+      case 'sic':
+        if(computer =='rock')
+          this.computerRank++;
+        else if(computer =='paper')
+          this.personRank++;
+        break;
+    }
+  }
+  void play (){
+    while(true){
+      if(this.computerRank==3){
+        print('computer winn');
+        break;
+      }
+      else if(this.personRank==3){
+        print('concratiolation you are winn');
+        break;
+      }
+      print('enter choices one papper,rock,sic');
+      chosePerson = chocePerson();
+      choceComouter = choceRandComputer();
+      compare(chosePerson, choceComouter);
+
+      print(this.personRank);
+      print(this.computerRank);
+    }
+
+  }
+
+}
