@@ -1,0 +1,80 @@
+import 'dart:io';
+import 'dart:math';
+class randomNumbersGame{
+  Random rand;
+  int comChoce;
+  int perGuss;
+  int comGuss;
+  int MAX=15;
+  int MIN=0;
+  randomNumbersGame(){
+    rand = Random();
+  }
+
+  int computerChoice(){
+    return rand.nextInt(15);
+  }
+  int personGuss(){
+    return int.parse(stdin.readLineSync());
+  }
+  // يقوم المستخدم بتخمين رقم معين وفحصه ان كان اكبر او يساوي او اصغر
+  bool personStatus(){
+    this.perGuss =personGuss();
+    if(this.comChoce == perGuss){
+      return true;
+    }
+    else if (comChoce>perGuss) {
+      print('small too choce bigest');
+      return false;
+    }
+    else {
+      print('big too choce smallest');
+      return false;
+    }
+  }
+  // يقوم باختيار رقم عشوائي بين رقمين
+  int computerGuss(int min , int max){
+    print('min number is $min max nimber is$max');
+    return min+rand.nextInt(max-min);
+  }
+  // يقوم بأختيار قيمة عشوائية بين رقمين بين الرقم المطلوب والرقم ال>ي تم اختياره
+  bool computerstatus(){
+    this.comGuss = computerGuss(this.MIN,this.MAX);
+    print('computer guss $comGuss ');
+    if(this.comChoce == comGuss){
+      return true;
+    }
+    else if (comChoce>comGuss) {
+//      print('small too choce bigest');
+      this.MAX = comChoce;
+      this.MIN = comGuss;
+//      print('min number is $comGuss max nimber is$comChoce');
+      return false;
+    }
+    else {
+//      print('big too choce smallest');
+      this.MAX = comGuss ;
+      this.MIN = comChoce;
+//      print('min number is $comChoce max nimber is$comGuss');
+      return false;
+    }
+  }
+
+
+  void play() {
+    this.comChoce = computerChoice();// number you should guss
+    // loop until someone winn computer or person
+    while (true) {
+      print('Guss number');
+      if (personStatus() == true) {
+        print('congratiolation you are winn ');
+        break;
+      }
+      if (computerstatus() == true){
+        print(' you loss computer winn');
+        break;
+      }
+    }
+  }
+
+}
