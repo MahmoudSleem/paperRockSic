@@ -1,0 +1,5 @@
+import 'rockpapperdic.dart';
+void main() {
+  RockPapperSic rok = RockPapperSic();
+  rok.play();
+}
